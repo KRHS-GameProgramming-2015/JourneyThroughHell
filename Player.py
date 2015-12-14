@@ -33,3 +33,31 @@ class Player():
         
         self.rect = self.rect.move(pos)
         
+    def move(self):
+        self.speed = [self.speedx, self.speedy]
+        self.rect = self.rect.move(self.speed)
+        self.didBounceX = False
+        self.didBounceY = False
+
+    def collideScreen(self, size):
+        width = size[0]
+        height = size[1]
+        
+    def go(self, direction):
+        if direction == "up":
+            self.speedy = -self.maxSpeedy
+        elif direction == "down":
+            self.speedy = self.maxSpeedy
+        if direction == "right":
+            self.speedx = self.maxSpeedx
+        elif direction == "left":
+            self.speedx = -self.maxSpeedx
+        
+        if direction == "stop up":
+            self.speedy = 0
+        elif direction == "stop down":
+            self.speedy = 0
+        if direction == "stop right":
+            self.speedx = 0
+        elif direction == "stop left":
+            self.speedx = 0
