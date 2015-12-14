@@ -39,7 +39,7 @@ while True:
                 player.go("stop left")
             elif event.key == pygame.K_RIGHT:
                 player.go("stop right")
-    
+
     player.move()
 
     bgColor = r,g,b
