@@ -32,6 +32,23 @@ class Player():
         self.radius = self.rect.width/2 - 2
         
         self.rect = self.rect.move(pos)
+    
+    def update(self):
+        self.move()
+        self.animate()
+        
+    def animate(self):
+        if self.action == "moving":
+            if self.weapon == "chain saw":
+                self.images = self.moving_ChainSawImages
+            else:
+                self.images = self.moving_KnifeImages
+        else:
+            if self.weapon == "chain saw":
+                self.images = self.standing_ChainSawImages
+            else:
+                self.images = self.standing_KnifeImages
+        self.image = self.images[self.frame]
         
     def move(self):
         self.speed = [self.speedx, self.speedy]
@@ -46,18 +63,26 @@ class Player():
     def go(self, direction):
         if direction == "up":
             self.speedy = -self.maxSpeedy
+            self.action = "moving"
         elif direction == "down":
             self.speedy = self.maxSpeedy
+            self.action = "moving"
         if direction == "right":
             self.speedx = self.maxSpeedx
+            self.action = "moving"
         elif direction == "left":
             self.speedx = -self.maxSpeedx
+            self.action = "moving"
         
         if direction == "stop up":
+            self.action = "standing"
             self.speedy = 0
         elif direction == "stop down":
+            self.action = "standing"
             self.speedy = 0
         if direction == "stop right":
+            self.action = "standing"
             self.speedx = 0
         elif direction == "stop left":
+            self.action = "standing"
             self.speedx = 0

@@ -15,7 +15,7 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("Backgrounds/Room1.png")
 bgRect = bgImage.get_rect()
 
-player = Player("knife", [width/2, height/2])
+player = Player([width/2, height/2])
 
 while True:
     for event in pygame.event.get():
@@ -40,7 +40,7 @@ while True:
             elif event.key == pygame.K_RIGHT:
                 player.go("stop right")
 
-    player.move()
+    player.update()
 
     bgColor = r,g,b
     screen.fill(bgColor)
