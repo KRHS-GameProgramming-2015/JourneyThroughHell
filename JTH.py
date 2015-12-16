@@ -30,6 +30,8 @@ while True:
                 player.go("left")
             elif event.key == pygame.K_RIGHT:
                 player.go("right")
+            elif event.key == pygame.K_a:
+                player.go("attack")
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 player.go("stop up")

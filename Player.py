@@ -43,11 +43,17 @@ class Player():
                 self.images = self.moving_ChainSawImages
             else:
                 self.images = self.moving_KnifeImages
+        elif self.action == "attacking":
+            if self.weapon == "chain saw":
+                self.images =  self.attacking_ChainSawImages
+            else:
+                self.images = self.attacking_KnifeImages
         else:
             if self.weapon == "chain saw":
                 self.images = self.standing_ChainSawImages
             else:
                 self.images = self.standing_KnifeImages
+        
         self.image = self.images[self.frame]
         
     def move(self):
@@ -61,6 +67,11 @@ class Player():
         height = size[1]
         
     def go(self, direction):
+        if direction == "attack":
+            self.speedx = 0
+            self.speedy = 0
+            self.action = "attacking"
+            
         if direction == "up":
             self.speedy = -self.maxSpeedy
             self.action = "moving"
@@ -86,3 +97,4 @@ class Player():
         elif direction == "stop left":
             self.action = "standing"
             self.speedx = 0
+            
