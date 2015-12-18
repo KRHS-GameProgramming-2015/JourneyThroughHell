@@ -12,7 +12,7 @@ bgColor = r,g,b = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("Backgrounds/Room1.png")
+bgImage = pygame.image.load("Backgrounds/Room2.png")
 bgRect = bgImage.get_rect()
 
 player = Player([width/2, height/2])
