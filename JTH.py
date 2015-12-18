@@ -41,7 +41,8 @@ while True:
                 player.go("stop left")
             elif event.key == pygame.K_RIGHT:
                 player.go("stop right")
-
+            elif event.key == pygame.K_a:
+                player.go("stop attack")
     player.update()
 
     bgColor = r,g,b
