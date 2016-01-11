@@ -98,3 +98,15 @@ class Player():
             self.action = "standing"
             self.speedx = 0
             
+        if direction == "stop up":
+            self.action = "attacking"
+            self.speedy = 0
+        elif direction == "stop down":
+            self.action = "attacking"
+            self.speedy = 0
+        if direction == "stop right":
+            self.action = "attacking"
+            self.speedx = 0
+        elif direction == "stop left":
+            self.action = "attacking"
+            self.speedx = 0
