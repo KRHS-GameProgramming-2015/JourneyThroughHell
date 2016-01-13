@@ -13,6 +13,11 @@ bgColor = r,g,b = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
+zombies = []
+zombieTimer = 0
+zombieTimerMax = .75 * 60
+zombieLimit = 5
+
 bgImage = pygame.image.load("Backgrounds/Room1.png")
 bgRect = bgImage.get_rect()
 
@@ -44,11 +49,27 @@ while True:
                 player.go("stop right")
             elif event.key == pygame.K_a:
                 player.go("stop attack")
+    
+    zombieTimer += 1
+    if zombieTimer >= zombieTimerMax:
+        zombieTimer = 0
+        if len(zombies) < zombieLimit:
+            zombiePos = [random.randint(100, width-100),
+                         random.randint(100, height-100)]
+            zombies += [Zombie(["Enemies/Zombie1.png",
+                            "Enemies/Zombie2.png"],
+                           zombiePos)]
+    
     player.update()
-
+    
+    #for zombie in zombies:
+        #zombie.update()
+    
     bgColor = r,g,b
     screen.fill(bgColor)
     screen.blit(bgImage, bgRect)
     screen.blit(player.image, player.rect)
+    for zombie in zombies:
+        screen.blit(zombie.image, zombie.rect)
     pygame.display.flip()
     clock.tick(60)
