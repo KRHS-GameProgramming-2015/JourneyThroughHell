@@ -49,7 +49,7 @@ while True:
                 player.go("stop right")
             elif event.key == pygame.K_a:
                 player.go("stop attack")
-    
+
     zombieTimer += 1
     if zombieTimer >= zombieTimerMax:
         zombieTimer = 0
@@ -59,12 +59,12 @@ while True:
             zombies += [Zombie(["Enemies/Zombie1.png",
                             "Enemies/Zombie2.png"],
                            zombiePos)]
-    
+
     player.update()
     
     #for zombie in zombies:
         #zombie.update()
-    
+
     bgColor = r,g,b
     screen.fill(bgColor)
     screen.blit(bgImage, bgRect)
