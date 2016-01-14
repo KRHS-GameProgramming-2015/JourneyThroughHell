@@ -61,7 +61,7 @@ while True:
                            zombiePos)]
 
     player.update()
-    
+
     for zombie in zombies:
         zombie.update(size)
 
