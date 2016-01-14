@@ -62,8 +62,8 @@ while True:
 
     player.update()
     
-    #for zombie in zombies:
-        #zombie.update()
+    for zombie in zombies:
+        zombie.update(size)
 
     bgColor = r,g,b
     screen.fill(bgColor)

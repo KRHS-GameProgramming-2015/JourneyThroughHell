@@ -3,8 +3,8 @@ pygame.init()
 
 class Zombie():
     def __init__(self, images, pos = [0,0]):
-        self.speedx = 0
-        self.speedy = 0
+        self.speedx = 5
+        self.speedy = 5
         self.speed = [self.speedx, self.speedy]
         self.maxSpeedx = 5
         self.maxSpeedy = 5
@@ -17,6 +17,17 @@ class Zombie():
         self.maxFrame = len(self.images)
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = pos)
+        
+        self.didBounceX = False
+        self.didBounceY = False
+        
+    def update(self, size):
+        self.collideScreen(size)
+        self.move()
+        self.animate()
+        
+    def animate(self):
+        self.image = self.images[self.frame]
         
     def move(self):
         self.speed = [self.speedx, self.speedy]
@@ -39,7 +50,7 @@ class Zombie():
                 selfdidBounceY = True
                 self.move()
         
-    def collideBall(self, other):
+    def collideZombie(self, other):
         if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
             if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                 if self.radius + other.radius > self.distanceTo(other.rect.center):
