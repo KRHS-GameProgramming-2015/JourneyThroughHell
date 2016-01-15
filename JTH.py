@@ -1,6 +1,5 @@
 import sys, pygame, math, random
 from Player import *
-from Zombie import *
 pygame.init()
 
 clock = pygame.time.Clock()
