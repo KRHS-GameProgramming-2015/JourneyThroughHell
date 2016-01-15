@@ -12,7 +12,7 @@ class Zombie():
         self.images = []
         for image in images:
             self.images += [pygame.image.load(image)]
-        
+
         self.frame = 0
         self.maxFrame = len(self.images)
         self.image = self.images[self.frame]

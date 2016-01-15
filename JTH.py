@@ -67,7 +67,6 @@ while True:
         zombie.update(size)
         if not zombie.living:
             zombies.remove(zombie) 
-        
 
     bgColor = r,g,b
     screen.fill(bgColor)
