@@ -21,6 +21,8 @@ class Zombie():
         self.didBounceX = False
         self.didBounceY = False
         
+        self.living = True 
+        
     def update(self, size):
         self.collideScreen(size)
         self.move()
@@ -49,6 +51,12 @@ class Zombie():
                 self.speedy = -self.speedy
                 selfdidBounceY = True
                 self.move()
+     
+    def collidePlayer(self, other):
+        if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+            if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                if other.action=="attacking":
+                    self.living = False 
         
     def collideZombie(self, other):
         if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
