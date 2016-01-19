@@ -2,8 +2,8 @@ import sys, pygame, math
 
 class Player():
     def __init__(self, weapon, pos = [0,0]):
-        self.speedx = 3
-        self.speedy = 3
+        self.speedx = 0
+        self.speedy = 0
         self.speed = [self.speedx, self.speedy]
         self.maxSpeedx = 5
         self.maxSpeedy = 5
