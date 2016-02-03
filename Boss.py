@@ -1,7 +1,7 @@
 import sys, pygame, math, random
 pygame.init()
 
-class Zombie():
+class Boss():
     def __init__(self, images, pos = [0,0]):
         self.speedx = 5
         self.speedy = 5
@@ -21,13 +21,23 @@ class Zombie():
         self.didBounceX = False
         self.didBounceY = False
         
+        self.invincible = False
+        self.invincibleTimer = 0
+        self.invincibleTimerMax = 4*60
+        
         self.living = True 
+        self.hp = 10
         
     def update(self, size):
         self.collideScreen(size)
         self.move()
         self.animate()
-        
+        if self.invincible:
+            self.invincibleTimer += 1
+            if self.invincibleTimer >= self.invincibleTimerMax:
+                self.invincible = False
+                self.invincibleTimer = 0
+                    
     def animate(self):
         if self.speed == [0,0]:
             self.frame = 0
@@ -49,6 +59,7 @@ class Zombie():
         self.rect = self.rect.move(self.speed)
         self.didBounceX = False
         self.didBounceY = False
+        
 
     def collideScreen(self, size):
         width = size[0]
@@ -68,10 +79,15 @@ class Zombie():
     def collidePlayer(self, other):
         if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
             if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                if other.action=="attacking":
-                    self.living = False 
+                if other.action=="attacking" and not self.invincible:
+                    self.hp -= 1
+                    self.invincible = True
+                    print self.hp
+                if self.hp <= 0:
+                    self.living = False
+                    
         
-    def collideZombie(self, other):
+    def collideBoss(self, other):
         if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
             if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                 if self.radius + other.radius > self.distanceTo(other.rect.center):
@@ -95,11 +111,3 @@ class Zombie():
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt((x1-x2)**2+(y1-y2)**2)
-        
-        
-        
-        
-        
-            
-
-

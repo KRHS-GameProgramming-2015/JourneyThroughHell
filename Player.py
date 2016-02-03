@@ -17,9 +17,9 @@ class Player():
             self.attacking_ChainSawImages = [pygame.image.load("Player/ChainSawAttack.png")]
             self.images = self.standing_ChainSawImages
         else: #assume knife
-            self.standing_KnifeImages = [pygame.image.load("Player/KnifeStanding.png")]
-            self.moving_KnifeImages = [pygame.image.load("Player/KnifeMoving1.png")]
-            self.attacking_KnifeImages = [pygame.image.load("Player/AttackKnife.png")]
+            self.standing_KnifeImages = [pygame.image.load("Player/KatanaStanding.png")]
+            self.moving_KnifeImages = [pygame.image.load("Player/KatanaMoving1.png")]
+            self.attacking_KnifeImages = [pygame.image.load("Player/AttackKatana.png")]
             self.images = self.standing_KnifeImages
         
         self.frame = 0
