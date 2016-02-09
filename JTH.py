@@ -76,7 +76,7 @@ while True:
             bosses += [Boss(["Bosses/R1Boss1.png",
                             "Bosses/R1Boss2.png"],
                            bossPos)]
-        player.update()
+        player.update(size)
 
         for zombie in zombies:
             zombie.collidePlayer(player)

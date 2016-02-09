@@ -23,7 +23,7 @@ class Boss():
         
         self.invincible = False
         self.invincibleTimer = 0
-        self.invincibleTimerMax = 4*60
+        self.invincibleTimerMax = 2*60
         
         self.living = True 
         self.hp = 10
