@@ -19,7 +19,7 @@ class Zombie():
         self.rect = self.image.get_rect(center = pos)
         
         self.didBounceX = False
-        self.di dBounceY = False
+        self.didBounceY = False
         
         self.living = True 
         
@@ -29,22 +29,9 @@ class Zombie():
         self.animate()
         
     def animate(self):
-        if self.speed == [0,0]:
-            self.frame = 0
-        else:
-            self.frame = 1
         self.image = self.images[self.frame]
         
     def move(self):
-        if random.randint(1,10) == 1:
-            if self.speed == [0,0]:
-                self.speedx = self.oldspeedx
-                self.speedy = self.oldspeedy
-            else:
-                self.oldspeedx = self.speedx
-                self.oldspeedy = self.speedy
-                self.speedx = 0
-                self.speedy = 0
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
         self.didBounceX = False
